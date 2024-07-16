@@ -1,0 +1,20 @@
+[
+  {
+    "icon": "Blog",
+    "name": "博客",
+    "link": "http://blog.huangzhitao.asia/",
+    "url": "/blog"
+  },
+  {
+    "icon": "Cloud",
+    "name": "网盘",
+    "link": "http://pan.huangzhitao.asia/",
+    "url": "/cloud"
+  },
+  {
+    "icon": "CompactDisc",
+    "name": "音乐",
+    "link": "http://music.huangzhitao.asia/",
+    "url": "/music"
+  }
+]

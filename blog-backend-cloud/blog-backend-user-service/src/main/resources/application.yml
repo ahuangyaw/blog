@@ -1,0 +1,88 @@
+# 公共配置文件
+# @author hwang
+spring:
+  application:
+    name: blog-backend-user-service
+  # 默认 dev 环境
+  profiles:
+    active: dev
+  security:
+    jwt:
+      key: jwt-key
+      # jwt 的有效时间（天）
+      expire: 7
+  # 支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # session 配置
+  session:
+    store-type: redis
+    # 30 天过期
+    timeout: 2592000
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  # Redis 配置
+  data:
+    redis:
+      # redis 端口
+      port: 6379
+      # redis 密码
+      password: xiaoHuang@3846
+      # redis 地址
+      host: 47.120.42.45
+      # redis连接超时时间（毫秒）
+      timeout: 10000
+      # 数据库索引，默认为0
+      database: 1
+  servlet:
+    multipart:
+      # 大小限制
+      max-file-size: 10MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  address: 0.0.0.0
+  port: 8102
+  servlet:
+    context-path: /api/user
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
+        path: /api
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+# springdoc-openapi项目配置
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    tags-sorter: alpha
+#    operations-sorter: alpha
+#  api-docs:
+#    path: /v3/api-docs
+#  group-configs:
+#    - group: 'default'
+#      paths-to-match: '/**'
+#      packages-to-scan: com.xiaominfo.knife4j.demo.web
+## knife4j的增强配置，不需要增强可以不配
+#knife4j:
+#  enable: true
+#  setting:
+#    language: zh_cn
